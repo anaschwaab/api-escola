@@ -41,15 +41,18 @@ router.post("/alunos", async (req, res) => {
 });
 
 router.put("/alunos/:matricula", async (req, res) => {
-    const { nome, email, telefone, turma } = req.body
+    const { nome, email, telefone, turmaId } = req.body
     const { matricula } = req.params
     try {
     const aluno = await Aluno.findOne({ where: { matricula } })
+    const turma = await Turma.findOne({ where: {id: turmaId} })
     if (aluno) {
-        if (turma) {
-        await Turma.update(turma, { where: { turma: codigo } });
+        if(turma){
+            const alunoNovo = await Aluno.update({ nome, email, telefone, turmaId }, { where: { matricula } });
+            res.status(201).json("Aluno editado com sucesso!");
+        }else{
+            res.status(404).json({message: "Turma não encontrada."});
         }
-        await Aluno.update({ nome, email, telefone }, { where: { matricula } });
     } else {
         res.status(404).json({ message: "Aluno não encontrado." });
     }

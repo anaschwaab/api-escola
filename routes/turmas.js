@@ -32,4 +32,6 @@ router.post("/turmas", async (req, res) => {
     }
 });
 
+
+
 module.exports = router;
