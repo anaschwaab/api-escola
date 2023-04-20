@@ -10,11 +10,13 @@ authenticate(connection);
 
 const rotasAlunos = require("./routes/alunos");
 const rotasTurmas = require("./routes/turmas");
+const rotasProfessores = require("./routes/professores");
 
 
 
 app.use(rotasAlunos);
 app.use(rotasTurmas);
+app.use(rotasProfessores);
 
 
 app.listen(3000, () => {
