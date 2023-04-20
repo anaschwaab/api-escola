@@ -1,9 +1,85 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Aluno:
+ *       type: object
+ *       required:
+ *         - nome
+ *         - email
+ *         - telefone
+ *         - matricula
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: Automaticamente gerado pelo Banco de Dados
+ *         nome:
+ *           type: string
+ *           description: O nome do aluno
+ *           format: isAlpha
+ *         email:
+ *           type: string
+ *           description: O email do aluno
+ *           format: isEmail
+ *         telefone:
+ *           type: string
+ *           description: O telefone do aluno 
+ *         createdAt:
+ *           type: datetime
+ *           description: Automaticamente gerado pelo Banco de Dados
+ *           format: date
+ *         updatedAt:
+ *           type: datetime
+ *           description: Automaticamente gerado pelo Banco de Dados
+ *           format: date
+ *         turmaId:
+ *           type: int
+ *           description: Id da Turma
+ *           format: integer
+ *       example:
+ *         id: 1
+ *         nome: João Silva
+ *         email: joaosilva@email.com
+ *         telefone: (00) 00000-0000
+ *         createdAt: 2023-04-20T14:14:36.108Z
+ *         updatedAt: 2023-04-20T14:14:36.108Z
+ *         turmaId: 2
+ */
+
+
 const Aluno = require("../database/aluno");
 const Turma = require("../database/turma");
 
 const { Router } = require("express");
 
 const router = Router();
+
+/**
+ * @swagger
+ * tags:
+ *   name: alunos
+ *   description: The books managing API
+ * /alunos:
+ *   post:
+ *     summary: Create a new book
+ *     tags: [Alunos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/alunos'
+ *     responses:
+ *       200:
+ *         description: The created book.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/aluno'
+ *       500:
+ *         description: Some server error
+ *
+ */
 
 router.get("/alunos", async (req, res) => {
     const listaAlunos = await Aluno.findAll();

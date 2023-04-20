@@ -5,10 +5,18 @@ const Turma = connection.define("turma", {
     serie: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate:{
+            isAlpha: true,
+            notEmpty: true
+        },
     },
     codigo: {
         type: DataTypes.STRING(2),
         allowNull: false,
+        validate:{
+            isAlphanumeric: true,
+            notEmpty: true
+        },
     },
 });
 
