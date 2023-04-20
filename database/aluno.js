@@ -6,7 +6,6 @@ const Aluno = connection.define("aluno", {
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-            isAlpha: true,
             notEmpty: true
         },
     },

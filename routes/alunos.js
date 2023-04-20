@@ -9,6 +9,7 @@
  *         - email
  *         - telefone
  *         - matricula
+ *         - turmaId
  *       properties:
  *         id:
  *           type: string

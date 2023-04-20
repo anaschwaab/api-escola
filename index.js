@@ -14,7 +14,8 @@ const rotasAlunos = require("./routes/alunos");
 const rotasTurmas = require("./routes/turmas");
 const rotasProfessores = require("./routes/professores");
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs, { explorer: true }));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs, { explorer: true, customCssUrl:
+  "https://cdn.jsdelivr.net/npm/swagger-ui-themes@3.0.0/themes/3.x/theme-newspaper.css",}));
 app.use(rotasAlunos);
 app.use(rotasTurmas);
 app.use(rotasProfessores);

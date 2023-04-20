@@ -6,7 +6,6 @@ const Professor = connection.define("professor", {
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-            isAlpha: true,
             notEmpty: true
         },
     },
